@@ -375,12 +375,12 @@ app.delete('/genero/:id', (request, response) =>
         response.status(STATUS_ERROR).send({ message: error });
     }
 });
-app.put('/genero/:id/:nombre', (request, response) =>
+app.put('/genero', (request, response) =>
 {
     try
     {
-        let nombre = request.params.nombre;
-        let id = request.params.id;
+        let nombre = request.body.nombre;
+        let id = request.body.id;
 
         if (checkEmptyValue(nuevoNombre))
         {

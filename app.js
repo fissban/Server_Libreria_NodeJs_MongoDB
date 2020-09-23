@@ -40,7 +40,7 @@ const LibroModel = mongoose.model("libros", LibroSchema);
 const URI = "mongodb+srv://admin:admin@cluster0.r4cnv.mongodb.net/library?retryWrites=true&w=majority";
 
 // OTHERS ------------------------------------------------------------------------------------------------ //
-const PORT = 3000;
+const PORT = process.env.PORT ? process.env.PORT : 3000;
 
 const STATUS_OK = 200;
 const BAD_REQUEST = 400;
@@ -481,4 +481,6 @@ async function conectar()
 };
 conectar();
 // Se inicia el servidor.-
-app.listen(PORT, () => console.log('Server start in port ' + PORT));
+const server = app.listen(PORT, () => console.log('Server start in port ' + PORT));
+
+module.exports = server;
